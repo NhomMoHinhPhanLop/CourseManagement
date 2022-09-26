@@ -17,6 +17,7 @@ import java.util.logging.Logger;
  *
  * @author Admin
  */
+//abc
 public class DatabaseManager {
     private Connection conn;
     private Statement s;
