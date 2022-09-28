@@ -1,7 +1,11 @@
-E:\Workspace\Mo Hinh Phan Lop\CourseManagement\src\main\java\moirottoiec\GUI\LoginGUI.java
-E:\Workspace\Mo Hinh Phan Lop\CourseManagement\src\main\java\moirottoiec\DAL\DatabaseManager.java
-E:\Workspace\Mo Hinh Phan Lop\CourseManagement\src\main\java\moirottoiec\DAL\UserDAL.java
-E:\Workspace\Mo Hinh Phan Lop\CourseManagement\src\main\java\moirottoiec\DTO\User.java
-E:\Workspace\Mo Hinh Phan Lop\CourseManagement\src\main\java\moirottoiec\Main.java
-E:\Workspace\Mo Hinh Phan Lop\CourseManagement\src\main\java\moirottoiec\GUI\MainGUI.java
-E:\Workspace\Mo Hinh Phan Lop\CourseManagement\src\main\java\moirottoiec\BLL\UserBLL.java
+D:\CourseManagement\src\main\java\moirottoiec\DAL\UserDAL.java
+D:\CourseManagement\src\main\java\moirottoiec\DTO\User.java
+D:\CourseManagement\src\main\java\moirottoiec\GUI\MainGUI.java
+D:\CourseManagement\src\main\java\moirottoiec\GUI\LoginGUI.java
+D:\CourseManagement\src\main\java\moirottoiec\BLL\StudentGradeBLL.java
+D:\CourseManagement\src\main\java\moirottoiec\BLL\UserBLL.java
+D:\CourseManagement\src\main\java\moirottoiec\DTO\StudentGrade.java
+D:\CourseManagement\src\main\java\moirottoiec\GUI\StudentGradeGUI.java
+D:\CourseManagement\src\main\java\moirottoiec\DAL\DatabaseManager.java
+D:\CourseManagement\src\main\java\moirottoiec\DAL\StudentGradeDAL.java
+D:\CourseManagement\src\main\java\moirottoiec\Main.java

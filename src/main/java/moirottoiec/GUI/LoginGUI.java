@@ -225,7 +225,10 @@ public class LoginGUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, message);
             }
             else{
-                new MainGUI(userBLL.getUser()).setVisible(true);
+                MainGUI maingui = new MainGUI(userBLL.getUser());
+                maingui.setVisible(true);
+                maingui.setLocationRelativeTo(null);
+                
                 dispose();
             }
         }
