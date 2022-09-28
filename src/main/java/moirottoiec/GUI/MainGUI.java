@@ -23,6 +23,7 @@ import moirottoiec.DTO.User;
  *
  * @author Admin
  */
+//cuong
 public class MainGUI extends javax.swing.JFrame {
 
     /**
