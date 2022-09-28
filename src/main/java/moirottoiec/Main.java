@@ -7,6 +7,7 @@ package moirottoiec;
 import moirottoiec.BLL.UserBLL;
 import moirottoiec.DAL.DatabaseManager;
 import moirottoiec.GUI.LoginGUI;
+import moirottoiec.GUI.MainGUI;
 
 /**
  *
@@ -19,7 +20,7 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        new LoginGUI().setVisible(true);
+        new MainGUI().setVisible(true);
 
     }
     

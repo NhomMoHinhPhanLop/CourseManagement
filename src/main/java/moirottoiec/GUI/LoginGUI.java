@@ -6,15 +6,19 @@ package moirottoiec.GUI;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Event;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import moirottoiec.BLL.UserBLL;
@@ -35,7 +39,26 @@ public class LoginGUI extends javax.swing.JFrame {
         this.setLocationRelativeTo(this);
         this.setLayout(new FlowLayout());
         this.getContentPane().setBackground(new Color(102,255,255));
+        tf_username.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent evt)
+            {
+                if(evt.getKeyCode() == KeyEvent.VK_ENTER)
+                {
+                    actionLogin();
+                }
+            }        
+        });
+        tf_password.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent evt)
+            {
+                if(evt.getKeyCode() == KeyEvent.VK_ENTER)
+                {
+                    actionLogin();
+                }
+            }        
+        });        
     }    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -208,6 +231,9 @@ public class LoginGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_tf_usernameActionPerformed
 
     private void btn_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LoginActionPerformed
+        actionLogin();
+    }//GEN-LAST:event_btn_LoginActionPerformed
+    private void actionLogin(){
         String username = tf_username.getText();
         String password = tf_password.getText();
         UserBLL userBLL=new UserBLL();
@@ -225,12 +251,11 @@ public class LoginGUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, message);
             }
             else{
-                new MainGUI(userBLL.getUser()).setVisible(true);
+                new MainGUI().setVisible(true);
                 dispose();
             }
         }
-    }//GEN-LAST:event_btn_LoginActionPerformed
-
+    }
     /**
      * @param args the command line arguments
      */
