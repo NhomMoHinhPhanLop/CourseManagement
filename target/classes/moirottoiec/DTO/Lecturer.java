@@ -16,7 +16,11 @@ public class Lecturer {
     private String LastName;
     private String FirstName;
     private Date HireDate;
-
+    
+    public Lecturer(){
+    
+    }
+    
     public Lecturer(int PersonID, String LastName, String FirstName, Date HireDate) {
         this.PersonID = PersonID;
         this.LastName = LastName;
