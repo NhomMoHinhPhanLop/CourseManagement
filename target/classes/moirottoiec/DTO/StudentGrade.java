@@ -13,18 +13,22 @@ public class StudentGrade {
     private int EnrollmentID; 
     private int CourseID;
     private int StudentID;
+    private String CoursTitle;
     private String LastName;
     private String FirstName;
     private float Grade;
 
-    public StudentGrade(int EnrollmentID, int CourseID, int StudentID, String LastName, String FirstName, float Grade) {
+    public StudentGrade(int EnrollmentID, int CourseID, int StudentID, String CoursTitle, String LastName, String FirstName, float Grade) {
         this.EnrollmentID = EnrollmentID;
         this.CourseID = CourseID;
         this.StudentID = StudentID;
+        this.CoursTitle = CoursTitle;
         this.LastName = LastName;
         this.FirstName = FirstName;
         this.Grade = Grade;
     }
+
+    
     
     
     public StudentGrade(){
@@ -82,6 +86,14 @@ public class StudentGrade {
 
     public void setFirstName(String FirstName) {
         this.FirstName = FirstName;
+    }
+
+    public String getCoursTitle() {
+        return CoursTitle;
+    }
+
+    public void setCoursTitle(String CoursTitle) {
+        this.CoursTitle = CoursTitle;
     }
 
     
