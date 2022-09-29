@@ -31,7 +31,7 @@ public class DatabaseManager {
         dbName="school";
         dbPassword="";
     }
-    public void ConnectDB(){
+    public void ConnectDB() {
         String dbPath = "jdbc:mysql://" + host + ":" + port + "/"
         + dbName + "?useUnicode=yes&characterEncoding=UTF-8";
         try{

@@ -23,7 +23,6 @@ import moirottoiec.DTO.User;
  *
  * @author Admin
  */
-//cuong
 public class MainGUI extends javax.swing.JFrame {
 
     /**
@@ -36,6 +35,7 @@ public class MainGUI extends javax.swing.JFrame {
         setTitle("Course Management");
         showtime();
         //tab.add( your panel )
+        tab.add(new StudentGradeGUI());
     }
 
     /**
