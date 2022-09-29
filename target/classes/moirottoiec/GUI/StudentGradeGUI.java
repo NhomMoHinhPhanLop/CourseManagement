@@ -40,6 +40,7 @@ public class StudentGradeGUI extends javax.swing.JPanel {
         StudentTable.setModel(model);
         model.addColumn("Enroll");
         model.addColumn("CourseID");
+        model.addColumn("CourseTitle");
         model.addColumn("StudenID");
         model.addColumn("FullName");
         model.addColumn("Grade");
@@ -47,7 +48,7 @@ public class StudentGradeGUI extends javax.swing.JPanel {
         List<StudentGrade> stgs = studentBLL.getAllStudentGrade();
         for (StudentGrade stg : stgs) {
             model.addRow(new Object[]{stg.getEnrollmentID(),stg.getCourseID(),
-            stg.getStudentID(),stg.toString(),stg.getGrade()});
+            stg.getCoursTitle(),stg.getStudentID(),stg.toString(),stg.getGrade()});
         }
         
     }

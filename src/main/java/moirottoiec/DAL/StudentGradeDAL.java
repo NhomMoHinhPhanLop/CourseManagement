@@ -31,7 +31,10 @@ public class StudentGradeDAL extends DatabaseManager{
         
         try {  
 //            String sql = "select * from studentgrade";
-            String sql = "SELECT * FROM studentgrade LEFT JOIN person on person.PersonID = studentgrade.StudentID";
+            String sql = "SELECT studentgrade.*,person.Lastname,person.Firstname,course.Title FROM studentgrade "
+                    + "JOIN person on person.PersonID = studentgrade.StudentID "
+                    + "JOIN course on course.CourseID = studentgrade.CourseID" ;
+
             Connection conn =getConn();  
             PreparedStatement stmt=conn.prepareStatement(sql);
             ResultSet rs=stmt.executeQuery();
@@ -40,6 +43,7 @@ public class StudentGradeDAL extends DatabaseManager{
                 
                 sg.setEnrollmentID(rs.getInt("EnrollmentID"));
                 sg.setCourseID(rs.getInt("CourseID"));
+                sg.setCoursTitle(rs.getString("Title"));
                 sg.setStudentID(rs.getInt("StudentID"));
                 sg.setFirstName(rs.getString("Firstname"));
                 sg.setLastName(rs.getString("Lastname"));
