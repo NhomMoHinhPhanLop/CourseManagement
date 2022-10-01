@@ -4,6 +4,7 @@
  */
 package moirottoiec.GUI;
 
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -12,6 +13,8 @@ import java.sql.Date;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -28,6 +31,7 @@ public class MainGUI extends javax.swing.JFrame {
     /**
      * Creates new form MainGUI
      */
+    ArrayList<String> ListTab = new ArrayList<String>();
     public MainGUI() {
 
         initComponents();
@@ -35,7 +39,6 @@ public class MainGUI extends javax.swing.JFrame {
         setTitle("Course Management");
         showtime();
         //tab.add( your panel )
-        tab.add("Lecturer managemant", new LecturerManagementGUI());
     }
 
     /**
@@ -56,6 +59,14 @@ public class MainGUI extends javax.swing.JFrame {
             }
         }).start();
     }
+        void ShowTab(String title,Object object){
+            if(!ListTab.contains(title)){
+            tab.add(title, (Component) object);
+            ListTab.add(title);
+            }
+            int index=tab.indexOfTab(title);
+            tab.setSelectedIndex(index);
+        }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -73,7 +84,7 @@ public class MainGUI extends javax.swing.JFrame {
         btn_Intructor = new javax.swing.JButton();
         btn_course_onl = new javax.swing.JButton();
         btn_StudentGrade = new javax.swing.JButton();
-        btn_teacher4 = new javax.swing.JButton();
+        btn_course_off = new javax.swing.JButton();
         tab = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -209,15 +220,15 @@ public class MainGUI extends javax.swing.JFrame {
             }
         });
 
-        btn_teacher4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btn_teacher4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/moirottoiec/GUI/img/education.png"))); // NOI18N
-        btn_teacher4.setText("Course Offline");
-        btn_teacher4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btn_teacher4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_teacher4.setFocusable(false);
-        btn_teacher4.addActionListener(new java.awt.event.ActionListener() {
+        btn_course_off.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_course_off.setIcon(new javax.swing.ImageIcon(getClass().getResource("/moirottoiec/GUI/img/education.png"))); // NOI18N
+        btn_course_off.setText("Course Offline");
+        btn_course_off.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btn_course_off.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_course_off.setFocusable(false);
+        btn_course_off.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_teacher4ActionPerformed(evt);
+                btn_course_offActionPerformed(evt);
             }
         });
 
@@ -231,7 +242,7 @@ public class MainGUI extends javax.swing.JFrame {
                     .addComponent(btn_Intructor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_course_onl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_StudentGrade, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_teacher4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_course_off, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_student, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -249,12 +260,12 @@ public class MainGUI extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addComponent(btn_course_onl, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(btn_teacher4, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_course_off, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(btn_Intructor, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(btn_StudentGrade, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -283,7 +294,7 @@ public class MainGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(tab))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -291,27 +302,36 @@ public class MainGUI extends javax.swing.JFrame {
 
     private void btn_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_studentActionPerformed
         // TODO add your handling code here:
+//        ShowTab("Lecturer Management", new LecturerManagementGUI());
     }//GEN-LAST:event_btn_studentActionPerformed
 
     private void btn_teacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_teacherActionPerformed
         // TODO add your handling code here:
+        ShowTab("Lecturer Management", new LecturerManagementGUI());
     }//GEN-LAST:event_btn_teacherActionPerformed
 
     private void btn_IntructorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IntructorActionPerformed
         // TODO add your handling code here:
+//        ShowTab("Lecturer Management", new LecturerManagementGUI());
+        
     }//GEN-LAST:event_btn_IntructorActionPerformed
 
     private void btn_course_onlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_course_onlActionPerformed
         // TODO add your handling code here:
+//        ShowTab("Lecturer Management", new LecturerManagementGUI());
+
     }//GEN-LAST:event_btn_course_onlActionPerformed
 
     private void btn_StudentGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_StudentGradeActionPerformed
         // TODO add your handling code here:
+        ShowTab("Student Grade", new StudentGradeGUI());
     }//GEN-LAST:event_btn_StudentGradeActionPerformed
 
-    private void btn_teacher4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_teacher4ActionPerformed
+    private void btn_course_offActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_course_offActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_teacher4ActionPerformed
+//        ShowTab("Lecturer Management", new LecturerManagementGUI());
+
+    }//GEN-LAST:event_btn_course_offActionPerformed
 
     /**
      * @param args the command line arguments
@@ -320,10 +340,10 @@ public class MainGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Intructor;
     private javax.swing.JButton btn_StudentGrade;
+    private javax.swing.JButton btn_course_off;
     private javax.swing.JButton btn_course_onl;
     private javax.swing.JButton btn_student;
     private javax.swing.JButton btn_teacher;
-    private javax.swing.JButton btn_teacher4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
