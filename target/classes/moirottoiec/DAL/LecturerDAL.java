@@ -65,4 +65,18 @@ public class LecturerDAL extends DatabaseManager {
         return result;
     }
     
+    
+    public int deleteLecturer (int personID){
+        String sql = "DELETE FROM person WHERE PersonID = ?";
+        int result = 0;
+        try{
+            Connection conn = getConn();
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setInt(1, personID);
+            result = st.executeUpdate();
+        } catch(SQLException ex){
+            Logger.getLogger(LecturerDAL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
 }

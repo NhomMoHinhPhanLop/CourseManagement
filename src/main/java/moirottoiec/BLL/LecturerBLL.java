@@ -16,7 +16,12 @@ import moirottoiec.DTO.Lecturer;
  * @author anhph
  */
 public class LecturerBLL {
-    LecturerDAL lecDAL = new LecturerDAL();
+    LecturerDAL lecDAL;
+    
+    public LecturerBLL(){
+        lecDAL = new LecturerDAL();
+    }
+    
     public Vector<Lecturer> getAllLecturer(){
         ResultSet rs = lecDAL.getAllLecturer();
         Vector<Lecturer> arr = new Vector<Lecturer>();
@@ -34,5 +39,12 @@ public class LecturerBLL {
         }
         return arr;
     }
-
+    
+    public void addLecturer(Lecturer lecturer){
+        lecDAL.addLecturer(lecturer);
+    }
+    
+    public void deleteLecturer(int personID){
+        lecDAL.deleteLecturer(personID);
+    }
 }
