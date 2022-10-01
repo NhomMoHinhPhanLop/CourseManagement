@@ -26,6 +26,7 @@ public class LecturerManagementGUI extends javax.swing.JPanel {
         initComponents();
         loadLecturerList();
         refresh();
+        refreshAdd();
     }
     
     public void refresh(){
@@ -44,6 +45,14 @@ public class LecturerManagementGUI extends javax.swing.JPanel {
             dtm.addRow(row);
         }
     
+    }
+    
+    public void refreshAdd(){
+        int numRow = lecturerTable.getRowCount();
+        int temp = numRow;
+        while(numRow > temp){
+            this.refresh();
+        }
     }
     
     public void loadLecturerList(){
@@ -245,6 +254,7 @@ public class LecturerManagementGUI extends javax.swing.JPanel {
             if(confirm == JOptionPane.YES_OPTION){
                 int personID = (int) lecturerTable.getValueAt(row, 0);
                 lecBLL.deleteLecturer(personID);
+                this.refresh();
             }
         }
     }//GEN-LAST:event_deleteButtonaddLecActionPerformed
