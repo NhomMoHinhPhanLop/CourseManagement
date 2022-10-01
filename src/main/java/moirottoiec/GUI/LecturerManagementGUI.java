@@ -34,7 +34,6 @@ public class LecturerManagementGUI extends javax.swing.JPanel {
         LecturerBLL lec = new LecturerBLL();
         Vector<Lecturer> arr = new Vector<Lecturer>();
         arr = lec.getAllLecturer();
-        System.out.println(arr);
         for(int i = 0; i < arr.size(); i++){
             Lecturer em = arr.get(i);
             int PersonID = em.getPersonID();

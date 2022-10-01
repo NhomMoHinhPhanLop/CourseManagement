@@ -51,7 +51,7 @@
                   <Component id="jPanel3" max="32767" attributes="0"/>
                   <Component id="tab" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="39" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -194,7 +194,7 @@
                       <Component id="btn_Intructor" alignment="0" max="32767" attributes="0"/>
                       <Component id="btn_course_onl" alignment="0" max="32767" attributes="0"/>
                       <Component id="btn_StudentGrade" alignment="1" max="32767" attributes="0"/>
-                      <Component id="btn_teacher4" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btn_course_off" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="btn_student" min="-2" pref="195" max="-2" attributes="0"/>
@@ -217,12 +217,12 @@
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="btn_course_onl" min="-2" pref="53" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="btn_teacher4" min="-2" pref="53" max="-2" attributes="0"/>
+                  <Component id="btn_course_off" min="-2" pref="53" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="btn_Intructor" min="-2" pref="53" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="btn_StudentGrade" min="-2" pref="53" max="-2" attributes="0"/>
-                  <EmptySpace pref="36" max="32767" attributes="0"/>
+                  <EmptySpace pref="26" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -343,7 +343,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_StudentGradeActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btn_teacher4">
+        <Component class="javax.swing.JButton" name="btn_course_off">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
@@ -363,7 +363,7 @@
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_teacher4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_course_offActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
