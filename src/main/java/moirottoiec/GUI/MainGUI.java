@@ -35,6 +35,7 @@ public class MainGUI extends javax.swing.JFrame {
         setTitle("Course Management");
         showtime();
         //tab.add( your panel )
+        tab.add("Lecturer managemant", new LecturerManagementGUI());
     }
 
     /**

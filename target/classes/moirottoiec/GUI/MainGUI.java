@@ -35,6 +35,10 @@ public class MainGUI extends javax.swing.JFrame {
         setTitle("Course Management");
         showtime();
         //tab.add( your panel )
+<<<<<<< HEAD
+=======
+        tab.add("Lecturer managemant", new LecturerManagementGUI());
+>>>>>>> feature_QLGV_2909
     }
 
     /**
@@ -337,4 +341,8 @@ public class MainGUI extends javax.swing.JFrame {
     private JLabel Date() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> feature_QLGV_2909
