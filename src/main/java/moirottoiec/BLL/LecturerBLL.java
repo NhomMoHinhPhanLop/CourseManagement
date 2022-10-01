@@ -22,6 +22,7 @@ public class LecturerBLL {
         lecDAL = new LecturerDAL();
     }
     
+    
     public Vector<Lecturer> getAllLecturer(){
         ResultSet rs = lecDAL.getAllLecturer();
         Vector<Lecturer> arr = new Vector<Lecturer>();

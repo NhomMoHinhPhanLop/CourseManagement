@@ -162,7 +162,6 @@ public class addLecturer extends javax.swing.JFrame {
         lecturer.setFirstName(firstNameTextField.getText());
         lecturer.setHireDate(Date.valueOf(hireDateTextField.getText()));
         lecturerBLL.addLecturer(lecturer);
-        lecturerBLL.getAllLecturer();
         this.dispose();
     }//GEN-LAST:event_addButtonActionPerformed
 
