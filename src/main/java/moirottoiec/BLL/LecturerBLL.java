@@ -16,6 +16,7 @@ import moirottoiec.DTO.Lecturer;
  * @author anhph
  */
 public class LecturerBLL {
+    
     LecturerDAL lecDAL = new LecturerDAL();
     public Vector<Lecturer> getAllLecturer(){
         ResultSet rs = lecDAL.getAllLecturer();
