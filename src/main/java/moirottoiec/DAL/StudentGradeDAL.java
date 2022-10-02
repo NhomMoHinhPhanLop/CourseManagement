@@ -57,37 +57,8 @@ public class StudentGradeDAL extends DatabaseManager{
 
         return studentgs;
     }
-    public List<StudentGrade> findStudentByName(String name){
-        
-        List<StudentGrade> ls = new ArrayList <StudentGrade>();
-        
-        
-        try {  
-//            String sql = "select * from studentgrade";
-            String sql = "SELECT * FROM studentgrade LEFT JOIN person on person.PersonID = studentgrade.StudentID"
-                    + "where Lastname like '%"+name+"'%";
-            
-            Connection conn =getConn();  
-            PreparedStatement stmt=conn.prepareStatement(sql);
-            ResultSet rs=stmt.executeQuery();
-            while(rs.next()){
-                StudentGrade sg= new StudentGrade();
-                
-                sg.setEnrollmentID(rs.getInt("EnrollmentID"));
-                sg.setCourseID(rs.getInt("CourseID"));
-                sg.setStudentID(rs.getInt("StudentID"));
-                sg.setFirstName(rs.getString("Firstname"));
-                sg.setLastName(rs.getString("Lastname"));
-                sg.setGrade(rs.getFloat("Grade"));
-                
-                ls.add(sg);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(UserDAL.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return ls;
-    }
+    
+    
 
    
 }

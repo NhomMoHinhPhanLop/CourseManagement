@@ -48,7 +48,7 @@ public class StudentGradeGUI extends javax.swing.JPanel {
         List<StudentGrade> stgs = studentBLL.getAllStudentGrade();
         for (StudentGrade stg : stgs) {
             model.addRow(new Object[]{stg.getEnrollmentID(),stg.getCourseID(),
-            stg.getCoursTitle(),stg.getStudentID(),stg.toString(),stg.getGrade()});
+            stg.getCoursTitle(),stg.getStudentID(),stg.fullName(),stg.getGrade()});
         }
         
     }
