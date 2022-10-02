@@ -41,8 +41,21 @@ public class LecturerBLL {
         return arr;
     }
     
+    public Lecturer getLecturerByID(int ID){
+        return lecDAL.getLecturerByID(ID);
+        
+    }
+    
+    public Vector<Lecturer> findLecturer(String tuKhoa){
+        return lecDAL.findLecturer(tuKhoa);
+    }
+    
     public void addLecturer(Lecturer lecturer){
         lecDAL.addLecturer(lecturer);
+    }
+    
+    public void updateLecturer(Lecturer lecturer){
+        lecDAL.updateLecturer(lecturer);
     }
     
     public void deleteLecturer(int personID){
