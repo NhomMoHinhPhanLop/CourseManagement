@@ -17,11 +17,6 @@
             <artifactId>timingframework-swing</artifactId>
             <version>7.3.1</version>
         </dependency>
-        <dependency>
-            <groupId>edu.poly</groupId>
-            <artifactId>Lab__QuanLySinhVien</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
