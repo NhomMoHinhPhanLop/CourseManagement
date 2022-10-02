@@ -17,7 +17,7 @@ import moirottoiec.DAL.StudentGradeDAL;
  */
 public class StudentGradeGUI extends javax.swing.JPanel {
     StudentGradeBLL studentBLL;
-    String strFind="";
+//    String strFind="";
     
     /**
      * Creates new form StudentGradeGUI
@@ -48,7 +48,7 @@ public class StudentGradeGUI extends javax.swing.JPanel {
         List<StudentGrade> stgs = studentBLL.getAllStudentGrade();
         for (StudentGrade stg : stgs) {
             model.addRow(new Object[]{stg.getEnrollmentID(),stg.getCourseID(),
-            stg.getCoursTitle(),stg.getStudentID(),stg.toString(),stg.getGrade()});
+            stg.getCoursTitle(),stg.getStudentID(),stg.getFullName(),stg.getGrade()});
         }
         
     }
@@ -154,7 +154,7 @@ public class StudentGradeGUI extends javax.swing.JPanel {
     }//GEN-LAST:event_txtFindActionPerformed
 
     private void txtFindCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtFindCaretUpdate
-        strFind= txtFind.getText();
+        
               // TODO add your handling code here:
     }//GEN-LAST:event_txtFindCaretUpdate
 

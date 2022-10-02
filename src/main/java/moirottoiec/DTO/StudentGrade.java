@@ -98,8 +98,8 @@ public class StudentGrade {
 
     
 
-    @Override
-    public String toString() {
+    
+    public String getFullName()  {
         return FirstName + " " +LastName; //To change body of generated methods, choose Tools | Templates.
     }
     
