@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-E:\Workspace\Mo Hinh Phan Lop\CourseManagement\src\main\java\moirottoiec\GUI\addLecturerGUI.java
+E:\Workspace\Mo Hinh Phan Lop\CourseManagement\src\main\java\moirottoiec\DAL\DatabaseQLSV.java
 E:\Workspace\Mo Hinh Phan Lop\CourseManagement\src\main\java\moirottoiec\GUI\StudentGradeGUI.java
 E:\Workspace\Mo Hinh Phan Lop\CourseManagement\src\main\java\moirottoiec\DAL\LecturerDAL.java
 E:\Workspace\Mo Hinh Phan Lop\CourseManagement\src\main\java\moirottoiec\BLL\StudentGradeBLL.java
@@ -10,27 +9,10 @@ E:\Workspace\Mo Hinh Phan Lop\CourseManagement\src\main\java\moirottoiec\GUI\Lec
 E:\Workspace\Mo Hinh Phan Lop\CourseManagement\src\main\java\moirottoiec\GUI\MainGUI.java
 E:\Workspace\Mo Hinh Phan Lop\CourseManagement\src\main\java\moirottoiec\BLL\UserBLL.java
 E:\Workspace\Mo Hinh Phan Lop\CourseManagement\src\main\java\moirottoiec\DTO\StudentGrade.java
+E:\Workspace\Mo Hinh Phan Lop\CourseManagement\src\main\java\moirottoiec\GUI\addLecturer.java
 E:\Workspace\Mo Hinh Phan Lop\CourseManagement\src\main\java\moirottoiec\DTO\Lecturer.java
 E:\Workspace\Mo Hinh Phan Lop\CourseManagement\src\main\java\moirottoiec\GUI\LoginGUI.java
 E:\Workspace\Mo Hinh Phan Lop\CourseManagement\src\main\java\moirottoiec\DAL\DatabaseManager.java
 E:\Workspace\Mo Hinh Phan Lop\CourseManagement\src\main\java\moirottoiec\DAL\StudentGradeDAL.java
 E:\Workspace\Mo Hinh Phan Lop\CourseManagement\src\main\java\moirottoiec\BLL\LecturerBLL.java
-=======
-C:\Users\anhph\CourseManagement\src\main\java\moirottoiec\DTO\StudentGrade.java
-C:\Users\anhph\CourseManagement\src\main\java\moirottoiec\GUI\LoginGUI.java
-C:\Users\anhph\CourseManagement\src\main\java\moirottoiec\DAL\LecturerDAL.java
-C:\Users\anhph\CourseManagement\src\main\java\moirottoiec\DAL\StudentGradeDAL.java
-C:\Users\anhph\CourseManagement\src\main\java\moirottoiec\DTO\Lecturer.java
-C:\Users\anhph\CourseManagement\src\main\java\moirottoiec\DTO\User.java
-C:\Users\anhph\CourseManagement\src\main\java\moirottoiec\Main.java
-C:\Users\anhph\CourseManagement\src\main\java\moirottoiec\GUI\updateLecturerGUI.java
-C:\Users\anhph\CourseManagement\src\main\java\moirottoiec\GUI\MainGUI.java
-C:\Users\anhph\CourseManagement\src\main\java\moirottoiec\DAL\UserDAL.java
-C:\Users\anhph\CourseManagement\src\main\java\moirottoiec\GUI\addLecturer.java
-C:\Users\anhph\CourseManagement\src\main\java\moirottoiec\GUI\LecturerManagementGUI.java
-C:\Users\anhph\CourseManagement\src\main\java\moirottoiec\DAL\DatabaseManager.java
-C:\Users\anhph\CourseManagement\src\main\java\moirottoiec\GUI\StudentGradeGUI.java
-C:\Users\anhph\CourseManagement\src\main\java\moirottoiec\BLL\StudentGradeBLL.java
-C:\Users\anhph\CourseManagement\src\main\java\moirottoiec\BLL\UserBLL.java
-C:\Users\anhph\CourseManagement\src\main\java\moirottoiec\BLL\LecturerBLL.java
->>>>>>> feature_QLGV_2909
+E:\Workspace\Mo Hinh Phan Lop\CourseManagement\src\main\java\moirottoiec\GUI\updateLecturerGUI.java
