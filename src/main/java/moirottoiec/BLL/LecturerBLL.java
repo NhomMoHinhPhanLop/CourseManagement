@@ -16,8 +16,13 @@ import moirottoiec.DTO.Lecturer;
  * @author anhph
  */
 public class LecturerBLL {
+    LecturerDAL lecDAL;
     
-    LecturerDAL lecDAL = new LecturerDAL();
+    public LecturerBLL(){
+        lecDAL = new LecturerDAL();
+    }
+    
+    
     public Vector<Lecturer> getAllLecturer(){
         ResultSet rs = lecDAL.getAllLecturer();
         Vector<Lecturer> arr = new Vector<Lecturer>();
@@ -35,5 +40,25 @@ public class LecturerBLL {
         }
         return arr;
     }
-
+    
+    public Lecturer getLecturerByID(int ID){
+        return lecDAL.getLecturerByID(ID);
+        
+    }
+    
+    public Vector<Lecturer> findLecturer(String tuKhoa){
+        return lecDAL.findLecturer(tuKhoa);
+    }
+    
+    public void addLecturer(Lecturer lecturer){
+        lecDAL.addLecturer(lecturer);
+    }
+    
+    public void updateLecturer(Lecturer lecturer){
+        lecDAL.updateLecturer(lecturer);
+    }
+    
+    public void deleteLecturer(int personID){
+        lecDAL.deleteLecturer(personID);
+    }
 }
