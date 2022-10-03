@@ -24,21 +24,7 @@ public class LecturerBLL {
     
     
     public Vector<Lecturer> getAllLecturer(){
-        ResultSet rs = lecDAL.getAllLecturer();
-        Vector<Lecturer> arr = new Vector<Lecturer>();
-        try{
-            while(rs.next()){
-                Lecturer lec = new Lecturer();
-                lec.setPersonID(rs.getInt("PersonID"));
-                lec.setLastName(rs.getString("LastName"));
-                lec.setFirstName(rs.getString("FirstName"));
-                lec.setHireDate(rs.getDate("HireDate")); 
-                arr.add(lec); 
-            }
-        } catch (SQLException ex) {
-        System.out.println(ex);
-        }
-        return arr;
+        return lecDAL.getAllLecturer();
     }
     
     public Lecturer getLecturerByID(int ID){

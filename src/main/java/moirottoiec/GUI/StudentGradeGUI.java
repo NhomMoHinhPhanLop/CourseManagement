@@ -18,17 +18,18 @@ import moirottoiec.DAL.StudentGradeDAL;
 public class StudentGradeGUI extends javax.swing.JPanel {
     StudentGradeBLL studentBLL;
     String strFind="";
+    DefaultTableModel model;
     
     /**
      * Creates new form StudentGradeGUI
      */
     public StudentGradeGUI() {
         initComponents();
-        fillTable();
+        fillTable("All");
         
     }
     
-    public void fillTable(){
+    public void fillTable(String type){
         studentBLL = new StudentGradeBLL();
         DefaultTableModel model = new DefaultTableModel(){
             @Override
@@ -44,16 +45,20 @@ public class StudentGradeGUI extends javax.swing.JPanel {
         model.addColumn("StudenID");
         model.addColumn("FullName");
         model.addColumn("Grade");
-//        List<StudentGrade> stgs = studentBLL.getAllStudentGrade(); 
-        List<StudentGrade> stgs = studentBLL.getAllStudentGrade();
+        List<StudentGrade> stgs ; 
+        if(type.equals("All")){
+            stgs = studentBLL.getAllStudentGrade();
+        }
+        else{
+            stgs = studentBLL.findStudentGrade(txtFind.getText());
+            
+        }
         for (StudentGrade stg : stgs) {
             model.addRow(new Object[]{stg.getEnrollmentID(),stg.getCourseID(),
             stg.getCoursTitle(),stg.getStudentID(),stg.toString(),stg.getGrade()});
         }
         
     }
-    
-    
     
     
     /**
@@ -117,6 +122,11 @@ public class StudentGradeGUI extends javax.swing.JPanel {
         });
 
         btn_search.setText("Search");
+        btn_search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_searchActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -157,6 +167,16 @@ public class StudentGradeGUI extends javax.swing.JPanel {
         strFind= txtFind.getText();
               // TODO add your handling code here:
     }//GEN-LAST:event_txtFindCaretUpdate
+
+    private void btn_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchActionPerformed
+        // TODO add your handling code here:
+        if(txtFind.getText().equals("")){
+            fillTable("All");
+        }
+        else{
+            fillTable("Search");       
+        }
+    }//GEN-LAST:event_btn_searchActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

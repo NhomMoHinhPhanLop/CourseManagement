@@ -52,7 +52,7 @@ public class StudentGradeDAL extends DatabaseManager{
                 studentgs.add(sg);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(UserDAL.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StudentGradeDAL.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return studentgs;
@@ -76,6 +76,7 @@ public class StudentGradeDAL extends DatabaseManager{
                 sg.setEnrollmentID(rs.getInt("EnrollmentID"));
                 sg.setCourseID(rs.getInt("CourseID"));
                 sg.setStudentID(rs.getInt("StudentID"));
+                sg.setCoursTitle(rs.getString("Title"));                
                 sg.setFirstName(rs.getString("Firstname"));
                 sg.setLastName(rs.getString("Lastname"));
                 sg.setGrade(rs.getFloat("Grade"));
@@ -83,11 +84,40 @@ public class StudentGradeDAL extends DatabaseManager{
                 ls.add(sg);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(UserDAL.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StudentGradeDAL.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return ls;
     }
 
-   
+   public List<StudentGrade> findStudentGrade(String keyword){
+       List<StudentGrade> ls = new ArrayList<StudentGrade>();
+        try {
+            String sql = "SELECT * FROM studentgrade LEFT JOIN person on person.PersonID = studentgrade.StudentID "
+                    + "LEFT JOIN course on course.CourseID = studentgrade.CourseID "
+                    + "where Lastname like '%"+keyword+"%' or FirstName like '%"+keyword+"%' or Title like '%"+keyword+"%'";
+            
+            Connection conn =getConn();  
+            PreparedStatement stmt=conn.prepareStatement(sql);
+//            stmt.setString(1, keyword);
+//            stmt.setString(2, keyword);
+            ResultSet rs=stmt.executeQuery();
+            while(rs.next()){
+                StudentGrade sg= new StudentGrade();
+                
+                sg.setEnrollmentID(rs.getInt("EnrollmentID"));
+                sg.setCourseID(rs.getInt("CourseID"));
+                sg.setStudentID(rs.getInt("StudentID"));
+                sg.setCoursTitle(rs.getString("Title"));   
+                sg.setFirstName(rs.getString("Firstname"));
+                sg.setLastName(rs.getString("Lastname"));
+                sg.setGrade(rs.getFloat("Grade"));
+                
+                ls.add(sg);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentGradeDAL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return ls;
+   }
 }

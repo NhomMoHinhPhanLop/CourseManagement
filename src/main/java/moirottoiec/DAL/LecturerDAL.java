@@ -22,17 +22,26 @@ public class LecturerDAL extends DatabaseManager {
         lecturer = new Lecturer();
     }
     
-    public ResultSet getAllLecturer(){
+    public Vector<Lecturer> getAllLecturer(){
         ResultSet rs=null;
+        Vector<Lecturer> arr = new Vector<Lecturer>();
         try {
             String sql = "SELECT * FROM person WHERE HireDate > 0";
             Connection conn = getConn();
             Statement stmt=conn.createStatement();
             rs=stmt.executeQuery(sql);
+            while(rs.next()){
+                Lecturer lec = new Lecturer();
+                lec.setPersonID(rs.getInt("PersonID"));
+                lec.setLastName(rs.getString("LastName"));
+                lec.setFirstName(rs.getString("FirstName"));
+                lec.setHireDate(rs.getDate("HireDate")); 
+                arr.add(lec); 
+            }
         } catch (SQLException ex) {
             Logger.getLogger(LecturerDAL.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return rs;
+        return arr;
     }
     
     public Lecturer getLecturerByID(int ID){
