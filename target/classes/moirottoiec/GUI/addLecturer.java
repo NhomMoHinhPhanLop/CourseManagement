@@ -7,9 +7,11 @@ package moirottoiec.GUI;
 
 import java.sql.Date;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import moirottoiec.BLL.LecturerBLL;
 import moirottoiec.DTO.Lecturer;
+import moirottoiec.GUI.LecturerManagementGUI;
 
 /**
  *
@@ -158,11 +160,32 @@ public class addLecturer extends javax.swing.JFrame {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
-        lecturer.setLastName(lastNameTextField.getText());
-        lecturer.setFirstName(firstNameTextField.getText());
-        lecturer.setHireDate(Date.valueOf(hireDateTextField.getText()));
-        lecturerBLL.addLecturer(lecturer);
-        this.dispose();
+        String lName = lastNameTextField.getText();
+        String fName = firstNameTextField.getText();
+        String hDate = hireDateTextField.getText();
+        
+        
+        if(lName.trim().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập ho!");
+        }
+        else if(fName.trim().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập tên!");
+        }
+        else if(hDate.trim().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập ngày thuê!");
+        }else{
+            lecturer.setLastName(lName);
+            lecturer.setFirstName(fName);
+            lecturer.setHireDate(Date.valueOf(hireDateTextField.getText()));
+            lecturerBLL.addLecturer(lecturer);
+            JOptionPane.showMessageDialog(rootPane, "Thêm giảng viên thành công!");
+            lecGUI.loadLecturerList();
+            this.dispose();
+        }
+        
+        
+        
+        
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed

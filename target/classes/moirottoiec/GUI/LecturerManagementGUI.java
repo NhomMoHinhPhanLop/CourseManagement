@@ -10,6 +10,9 @@ import java.sql.Date;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import moirottoiec.BLL.LecturerBLL;
 import moirottoiec.DAL.LecturerDAL;
@@ -20,6 +23,8 @@ import moirottoiec.DTO.Lecturer;
  * @author anhph
  */
 public class LecturerManagementGUI extends javax.swing.JPanel {
+    Lecturer lecturer;
+    LecturerBLL lecturerBLL;
     DefaultTableModel dtm;
     String tuKhoa = "";
     
@@ -28,13 +33,13 @@ public class LecturerManagementGUI extends javax.swing.JPanel {
      */
     public LecturerManagementGUI() {
         initComponents();
+        lecturer = new Lecturer();
+        lecturerBLL = new LecturerBLL();
         loadLecturerList();
-        refresh();
-        refreshAdd();
-        //loadFindLecturerList();
+        search();
     }
     
-    public void refresh(){
+    public void search(){
         dtm.setRowCount(0);
         LecturerBLL lecturerBLL = new LecturerBLL();
         Vector<Lecturer> arr = new Vector<Lecturer>();
@@ -51,15 +56,7 @@ public class LecturerManagementGUI extends javax.swing.JPanel {
         }
     
     }
-    
-    public int refreshAdd(){
-        int numRow = lecturerTable.getRowCount();
-        int temp = numRow;
-        while(numRow > temp){
-            this.loadLecturerList();
-        }
-        return numRow;
-    }
+
     
     public void loadLecturerList(){
         dtm = new DefaultTableModel(){
@@ -87,21 +84,12 @@ public class LecturerManagementGUI extends javax.swing.JPanel {
             Object[] row = {PersonID, LastName, FirstName , HireDate};
             dtm.addRow(row);
         } 
+        addButton.setEnabled(true);
     }
     
-//    public void loadFindLecturerList(){
-//        LecturerDAL lecDAL = new LecturerDAL();
-//        dtm =(DefaultTableModel) lecturerTable.getModel();
-//        dtm.setRowCount(0);
-//        for(Lecturer lec : lecDAL.findLecturer(tuKhoa)){
-//            Object dataRow[] = new Object[4];
-//            dataRow[1] = lec.getPersonID();
-//            dataRow[2] = lec.getLastName();
-//            dataRow[3] = lec.getFirstName();
-//            dataRow[4] = lec.getHireDate();
-//            dtm.addRow(dataRow);
-//        }
-//    }
+   
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -121,12 +109,26 @@ public class LecturerManagementGUI extends javax.swing.JPanel {
         deleteButton = new javax.swing.JButton();
         updateButton = new javax.swing.JButton();
         refreshButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        personIDTextField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        firstNameTextField = new javax.swing.JTextField();
+        lastNameTextField = new javax.swing.JTextField();
+        hireDateTextField = new javax.swing.JTextField();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/moirottoiec/GUI/img/teacher.png"))); // NOI18N
         jLabel1.setText("LECTURER MANAGEMENT");
 
+        findTextField.setText("Searching...");
+        findTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                findTextFieldMouseClicked(evt);
+            }
+        });
         findTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 findTextFieldActionPerformed(evt);
@@ -177,6 +179,11 @@ public class LecturerManagementGUI extends javax.swing.JPanel {
         });
         lecturerTable.setRowHeight(18);
         lecturerTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        lecturerTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lecturerTableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(lecturerTable);
         if (lecturerTable.getColumnModel().getColumnCount() > 0) {
             lecturerTable.getColumnModel().getColumn(0).setMaxWidth(80);
@@ -215,28 +222,68 @@ public class LecturerManagementGUI extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel2.setText("PersonID");
+
+        personIDTextField.setEditable(false);
+        personIDTextField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel3.setText("Last Name");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel4.setText("First Name");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel5.setText("Hire Date");
+
+        firstNameTextField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+
+        lastNameTextField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+
+        hireDateTextField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(addButton)
-                        .addGap(88, 88, 88)
-                        .addComponent(updateButton)
-                        .addGap(86, 86, 86)
-                        .addComponent(deleteButton)
-                        .addGap(97, 97, 97)
-                        .addComponent(refreshButton))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(findTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 1098, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                        .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(findTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 1098, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                            .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane2)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(addButton))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(88, 88, 88)
+                                    .addComponent(updateButton)
+                                    .addGap(86, 86, 86)
+                                    .addComponent(deleteButton)
+                                    .addGap(97, 97, 97)
+                                    .addComponent(refreshButton))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(firstNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
+                                        .addComponent(personIDTextField))
+                                    .addGap(100, 100, 100)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel5))
+                                    .addGap(76, 76, 76)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(hireDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,10 +293,22 @@ public class LecturerManagementGUI extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(findTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
-                .addGap(33, 33, 33)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
+                    .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(personIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(lastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(firstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hireDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deleteButton)
                     .addComponent(updateButton)
@@ -265,7 +324,30 @@ public class LecturerManagementGUI extends javax.swing.JPanel {
 
     private void addLecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addLecActionPerformed
         // TODO add your handling code here:
-        new addLecturer().setVisible(true);
+        String lName = lastNameTextField.getText();
+        String fName = firstNameTextField.getText();
+        String hDate = hireDateTextField.getText();
+        
+        
+        if(lName.trim().equals("")){
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập ho!");
+        }
+        else if(fName.trim().equals("")){
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập tên!");
+        }
+        else if(hDate.trim().equals("")){
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập ngày thuê!");
+        }else{
+            lecturer.setLastName(lName);
+            lecturer.setFirstName(fName);
+            lecturer.setHireDate(Date.valueOf(hireDateTextField.getText()));
+            lecturerBLL.addLecturer(lecturer);
+            JOptionPane.showMessageDialog(this, "Thêm giảng viên thành công!");
+            loadLecturerList();
+            lastNameTextField.setText("");
+            firstNameTextField.setText("");
+            hireDateTextField.setText("");
+        }
     }//GEN-LAST:event_addLecActionPerformed
 
     private void deleteButtonaddLecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonaddLecActionPerformed
@@ -280,7 +362,7 @@ public class LecturerManagementGUI extends javax.swing.JPanel {
             if(confirm == JOptionPane.YES_OPTION){
                 int personID = (int) lecturerTable.getValueAt(row, 0);
                 lecBLL.deleteLecturer(personID);
-                this.refresh();
+                loadLecturerList();
             }
         }
     }//GEN-LAST:event_deleteButtonaddLecActionPerformed
@@ -291,12 +373,23 @@ public class LecturerManagementGUI extends javax.swing.JPanel {
         Lecturer lecturer = new Lecturer();
         int row = lecturerTable.getSelectedRow();
         if (row == -1){
-            JOptionPane.showMessageDialog(LecturerManagementGUI.this, "Vui long chon giang vien can xoa!", "Loi", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(LecturerManagementGUI.this, "Vui long chon giang vien can sua!",  "Loi", JOptionPane.ERROR_MESSAGE);
         }
         else{
             int personID = (int) lecturerTable.getValueAt(row, 0);
-            new updateLecturerGUI(personID).setVisible(true);
+        
+            lecturer.setPersonID(personID);
+            lecturer.setLastName(lastNameTextField.getText());
+            lecturer.setFirstName(firstNameTextField.getText());
+            lecturer.setHireDate(Date.valueOf(hireDateTextField.getText()));
+            lecturerBLL.updateLecturer(lecturer);
+            personIDTextField.setText("");
+            lastNameTextField.setText("");
+            firstNameTextField.setText("");
+            hireDateTextField.setText("");
+            loadLecturerList();
         }
+        
     }//GEN-LAST:event_updateButtonaddLecActionPerformed
 
     private void findTextFieldPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_findTextFieldPropertyChange
@@ -305,15 +398,35 @@ public class LecturerManagementGUI extends javax.swing.JPanel {
 
     private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
         // TODO add your handling code here:
-        this.refresh();
+        this.loadLecturerList();
+        findTextField.setText("Searching...");
+
     }//GEN-LAST:event_refreshButtonActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
         tuKhoa = findTextField.getText();
-        loadLecturerList();
-        refresh();
+        search();
+        
     }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void findTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_findTextFieldMouseClicked
+        // TODO add your handling code here:
+        findTextField.setText("");
+    }//GEN-LAST:event_findTextFieldMouseClicked
+
+    private void lecturerTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lecturerTableMouseClicked
+        // TODO add your handling code here:
+        lecturerBLL = new LecturerBLL();
+        int row = lecturerTable.getSelectedRow();
+        lecturer = lecturerBLL.getLecturerByID((int) lecturerTable.getValueAt(row, 0));
+        
+        personIDTextField.setText(String.valueOf(lecturer.getPersonID()));
+        lastNameTextField.setText(lecturer.getLastName());
+        firstNameTextField.setText(lecturer.getFirstName());
+        hireDateTextField.setText(String.valueOf(lecturer.getHireDate()));
+        addButton.setEnabled(false);
+    }//GEN-LAST:event_lecturerTableMouseClicked
 
     
 
@@ -321,9 +434,17 @@ public class LecturerManagementGUI extends javax.swing.JPanel {
     private javax.swing.JButton addButton;
     private javax.swing.JButton deleteButton;
     private javax.swing.JTextField findTextField;
+    private javax.swing.JTextField firstNameTextField;
+    private javax.swing.JTextField hireDateTextField;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField lastNameTextField;
     private javax.swing.JTable lecturerTable;
+    private javax.swing.JTextField personIDTextField;
     private javax.swing.JButton refreshButton;
     private javax.swing.JButton searchButton;
     private javax.swing.JButton updateButton;
