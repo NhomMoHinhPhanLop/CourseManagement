@@ -76,6 +76,8 @@ public class StudentGradeGUI extends javax.swing.JPanel {
         txtFind = new javax.swing.JTextField();
         btn_search = new javax.swing.JButton();
 
+        setOpaque(false);
+
         StudentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

@@ -7,14 +7,20 @@ package moirottoiec.GUI;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Date;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -59,9 +65,32 @@ public class MainGUI extends javax.swing.JFrame {
             }
         }).start();
     }
-        void ShowTab(String title,Object object){
+         private JPanel getTitlePanel(final JTabbedPane tabbedPane, final JPanel panel, String title)
+        {
+         JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+         titlePanel.setOpaque(false);
+         JLabel titleLbl = new JLabel(title);
+         titleLbl.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 5));
+         titlePanel.add(titleLbl);
+         JButton closeButton = new JButton("x");
+
+         closeButton.addMouseListener(new MouseAdapter()
+         {
+          @Override
+          public void mouseClicked(MouseEvent e)
+          {
+           tabbedPane.remove(panel);
+           ListTab.remove(title);
+          }
+         });
+         titlePanel.add(closeButton);
+
+         return titlePanel;
+        }
+        void AddTab(String title,JPanel panel){
             if(!ListTab.contains(title)){
-            tab.add(title, (Component) object);
+            tab.add(title,panel);
+            tab.setTabComponentAt(tab.indexOfComponent(panel),getTitlePanel(tab, panel, title));
             ListTab.add(title);
             }
             int index=tab.indexOfTab(title);
@@ -151,7 +180,7 @@ public class MainGUI extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel4)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 27, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jLabel1)
@@ -279,9 +308,13 @@ public class MainGUI extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tab))
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(87, 87, 87))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(tab)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,11 +323,11 @@ public class MainGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(tab))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -302,34 +335,34 @@ public class MainGUI extends javax.swing.JFrame {
 
     private void btn_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_studentActionPerformed
         // TODO add your handling code here:
-//        ShowTab("Lecturer Management", new LecturerManagementGUI());
+//        AddTab("Lecturer Management", new LecturerManagementGUI());
     }//GEN-LAST:event_btn_studentActionPerformed
 
     private void btn_teacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_teacherActionPerformed
         // TODO add your handling code here:
-//        ShowTab("Lecturer Management", new LecturerManagementGUI());
+        AddTab("Lecturer Management", new LecturerManagementGUI());
     }//GEN-LAST:event_btn_teacherActionPerformed
 
     private void btn_IntructorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IntructorActionPerformed
         // TODO add your handling code here:
-//        ShowTab("Lecturer Management", new LecturerManagementGUI());
+//        AddTab("Lecturer Management", new LecturerManagementGUI());
         
     }//GEN-LAST:event_btn_IntructorActionPerformed
 
     private void btn_course_onlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_course_onlActionPerformed
         // TODO add your handling code here:
-//        ShowTab("Lecturer Management", new LecturerManagementGUI());
+//        AddTab("Lecturer Management", new LecturerManagementGUI());
 
     }//GEN-LAST:event_btn_course_onlActionPerformed
 
     private void btn_StudentGradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_StudentGradeActionPerformed
         // TODO add your handling code here:
-        ShowTab("Student Grade", new StudentGradeGUI());
+        AddTab("Student Grade", new StudentGradeGUI());
     }//GEN-LAST:event_btn_StudentGradeActionPerformed
 
     private void btn_course_offActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_course_offActionPerformed
         // TODO add your handling code here:
-//        ShowTab("Lecturer Management", new LecturerManagementGUI());
+//        AddTab("Lecturer Management", new LecturerManagementGUI());
 
     }//GEN-LAST:event_btn_course_offActionPerformed
 
