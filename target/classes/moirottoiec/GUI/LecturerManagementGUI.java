@@ -154,6 +154,12 @@ public class LecturerManagementGUI extends javax.swing.JPanel {
             }
         });
 
+        jScrollPane2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jScrollPane2MouseClicked(evt);
+            }
+        });
+
         lecturerTable.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         lecturerTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -176,6 +182,11 @@ public class LecturerManagementGUI extends javax.swing.JPanel {
         });
         lecturerTable.setRowHeight(18);
         lecturerTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        lecturerTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lecturerTableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(lecturerTable);
         if (lecturerTable.getColumnModel().getColumnCount() > 0) {
             lecturerTable.getColumnModel().getColumn(0).setMaxWidth(80);
@@ -317,6 +328,14 @@ public class LecturerManagementGUI extends javax.swing.JPanel {
         loadLecturerList();
         refresh();
     }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void jScrollPane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jScrollPane2MouseClicked
+
+    private void lecturerTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lecturerTableMouseClicked
+        int row = lecturerTable.getSelectedRow();        // TODO add your handling code here:
+    }//GEN-LAST:event_lecturerTableMouseClicked
 
     
 
