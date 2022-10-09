@@ -93,9 +93,10 @@ public class StudentGradeDAL extends DatabaseManager{
    public List<StudentGrade> findStudentGrade(String keyword){
        List<StudentGrade> ls = new ArrayList<StudentGrade>();
         try {
-            String sql = "SELECT * FROM studentgrade LEFT JOIN person on person.PersonID = studentgrade.StudentID "
+            String sql = "SELECT *"
+                    + "FROM studentgrade LEFT JOIN person on person.PersonID = studentgrade.StudentID "
                     + "LEFT JOIN course on course.CourseID = studentgrade.CourseID "
-                    + "where Lastname like '%"+keyword+"%' or FirstName like '%"+keyword+"%' or Title like '%"+keyword+"%'";
+                    + "where Lastname like '%"+keyword+"%' or FirstName like '%"+keyword+"%' or Title like '%"+keyword+"%' or CONCAT(Firstname,' ',Lastname) like '%"+keyword+"%'";
             
             Connection conn =getConn();  
             PreparedStatement stmt=conn.prepareStatement(sql);
