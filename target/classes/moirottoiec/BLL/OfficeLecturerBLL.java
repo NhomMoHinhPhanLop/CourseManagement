@@ -15,7 +15,6 @@ import moirottoiec.DTO.OfficeLecturer;
  */
 public class OfficeLecturerBLL {
     private OfficeLecturerDAL officeDAL;
-    private OfficeLecturer officeDTO;
     public OfficeLecturerBLL(){
         officeDAL = new OfficeLecturerDAL();
     }

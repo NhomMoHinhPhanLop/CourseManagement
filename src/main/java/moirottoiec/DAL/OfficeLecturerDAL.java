@@ -43,10 +43,10 @@ public class OfficeLecturerDAL extends DatabaseManager{
                     + "JOIN person ON person.PersonID = courseinstructor.PersonID "
                     + "JOIN onlinecourse ON onlinecourse.CourseID = courseinstructor.CourseID ";
     String sqlOffcieLecturer ="INSERT INTO courseinstructor (CourseID, PersonID) VALUES ('3141', '2');";
-    public List<OfficeLecturer> onlinelist ;
-    public List<OfficeLecturer> onsitelist ;
-    public List<Lecturer> instructorlist;
-    public List<Course> courselist;
+    private List<OfficeLecturer> onlinelist ;
+    private List<OfficeLecturer> onsitelist ;
+    private List<Lecturer> instructorlist;
+    private List<Course> courselist;
     public OfficeLecturerDAL(){
         super();
         ConnectDB();
@@ -74,7 +74,7 @@ public class OfficeLecturerDAL extends DatabaseManager{
         
         return instructorlist;
     }
-// List Course (List<String>)
+// List Course 
     public List<Course> getAllCourseEmpty(){
         courselist = new ArrayList<Course>();
         try {  

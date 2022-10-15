@@ -382,10 +382,12 @@ public void showOnsiteTable(){
         }else{ 
          office.setPersonID(Integer.parseInt(strsLecturer[0]));
          office.setCourseID(Integer.parseInt(strsCourse[0]));
+           int comfirm = JOptionPane.showConfirmDialog(jPaneview,"Are you sure with this choice?");
+              if(comfirm==JOptionPane.YES_OPTION){
+                  officeBll.addOfficeLecturer(office);
+              }
         }
-        officeBll.addOfficeLecturer(office);
-       
-       
+        
         setComboboxCourse();
         setComboboxLecturer();
         showOnlineTable();
