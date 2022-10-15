@@ -373,6 +373,10 @@ public class LecturerManagementGUI extends javax.swing.JPanel {
                 int personID = (int) lecturerTable.getValueAt(row, 0);
                 lecBLL.deleteLecturer(personID);
                 loadLecturerList();
+                personIDTextField.setText("");
+                lastNameTextField.setText("");
+                firstNameTextField.setText("");
+                hireDateTextField.setText("");
             }
         }
     }//GEN-LAST:event_deleteButtonaddLecActionPerformed
@@ -409,6 +413,10 @@ public class LecturerManagementGUI extends javax.swing.JPanel {
     private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
         // TODO add your handling code here:
         this.loadLecturerList();
+        personIDTextField.setText("");
+        lastNameTextField.setText("");
+        firstNameTextField.setText("");
+        hireDateTextField.setText("");
         findTextField.setText("Searching...");
 
     }//GEN-LAST:event_refreshButtonActionPerformed

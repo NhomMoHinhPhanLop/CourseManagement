@@ -335,7 +335,7 @@ public class MainGUI extends javax.swing.JFrame {
 
     private void btn_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_studentActionPerformed
         // TODO add your handling code here:
-//        AddTab("Lecturer Management", new LecturerManagementGUI());
+        AddTab("Student ManagementGUI", new StudentManagementGUI());
     }//GEN-LAST:event_btn_studentActionPerformed
 
     private void btn_teacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_teacherActionPerformed
