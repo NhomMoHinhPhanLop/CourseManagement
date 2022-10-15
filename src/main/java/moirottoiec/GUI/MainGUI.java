@@ -344,7 +344,8 @@ public class MainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_teacherActionPerformed
 
     private void btn_IntructorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IntructorActionPerformed
-        // TODO add your handling code here:
+               AddTab("OfficeAssignment", new OfficeLecturerGUI());
+
 //        AddTab("Lecturer Management", new LecturerManagementGUI());
         
     }//GEN-LAST:event_btn_IntructorActionPerformed
