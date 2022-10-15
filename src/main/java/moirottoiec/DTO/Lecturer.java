@@ -60,5 +60,8 @@ public class Lecturer {
         this.HireDate = HireDate;
     }
     
+    public String toString(){
+        return ""+PersonID+" - "+LastName+" "+FirstName;
+    }
     
 }
