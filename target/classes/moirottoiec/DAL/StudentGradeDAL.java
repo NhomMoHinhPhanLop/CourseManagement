@@ -57,38 +57,6 @@ public class StudentGradeDAL extends DatabaseManager{
 
         return studentgs;
     }
-    public List<StudentGrade> findStudentByName(String name){
-        
-        List<StudentGrade> ls = new ArrayList <StudentGrade>();
-        
-        
-        try {  
-//            String sql = "select * from studentgrade";
-            String sql = "SELECT * FROM studentgrade LEFT JOIN person on person.PersonID = studentgrade.StudentID"
-                    + "where Lastname like '%"+name+"'%";
-            
-            Connection conn =getConn();  
-            PreparedStatement stmt=conn.prepareStatement(sql);
-            ResultSet rs=stmt.executeQuery();
-            while(rs.next()){
-                StudentGrade sg= new StudentGrade();
-                
-                sg.setEnrollmentID(rs.getInt("EnrollmentID"));
-                sg.setCourseID(rs.getInt("CourseID"));
-                sg.setStudentID(rs.getInt("StudentID"));
-                sg.setCoursTitle(rs.getString("Title"));                
-                sg.setFirstName(rs.getString("Firstname"));
-                sg.setLastName(rs.getString("Lastname"));
-                sg.setGrade(rs.getFloat("Grade"));
-                
-                ls.add(sg);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(StudentGradeDAL.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return ls;
-    }
 
    public List<StudentGrade> findStudentGrade(String keyword){
        List<StudentGrade> ls = new ArrayList<StudentGrade>();
@@ -96,7 +64,8 @@ public class StudentGradeDAL extends DatabaseManager{
             String sql = "SELECT *"
                     + "FROM studentgrade LEFT JOIN person on person.PersonID = studentgrade.StudentID "
                     + "LEFT JOIN course on course.CourseID = studentgrade.CourseID "
-                    + "where Lastname like '%"+keyword+"%' or FirstName like '%"+keyword+"%' or Title like '%"+keyword+"%' or CONCAT(Firstname,' ',Lastname) like '%"+keyword+"%'";
+                    + "where Lastname like '%"+keyword+"%' or FirstName like '%"+keyword+"%' "
+                    + "or Title like '%"+keyword+"%' or CONCAT(Firstname,' ',Lastname) like '%"+keyword+"%'";
             
             Connection conn =getConn();  
             PreparedStatement stmt=conn.prepareStatement(sql);

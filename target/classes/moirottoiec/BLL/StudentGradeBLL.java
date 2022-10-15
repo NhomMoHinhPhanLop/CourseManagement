@@ -21,9 +21,6 @@ public class StudentGradeBLL {
     public List<StudentGrade> getAllStudentGrade(){
         return studentDAL.getALLStudentGrade();
     }
-    public List<StudentGrade> findStudentByName(String name){  
-        return studentDAL.findStudentByName(name);
-    }
     public List<StudentGrade> findStudentGrade(String keyword){
         return studentDAL.findStudentGrade(keyword);
     }
