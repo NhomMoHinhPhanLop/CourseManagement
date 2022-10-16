@@ -352,7 +352,7 @@ public class MainGUI extends javax.swing.JFrame {
 
     private void btn_course_onlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_course_onlActionPerformed
         // TODO add your handling code here:
-//        AddTab("Lecturer Management", new LecturerManagementGUI());
+        AddTab("Course Online Management", new Course_Online());
 
     }//GEN-LAST:event_btn_course_onlActionPerformed
 
@@ -363,7 +363,7 @@ public class MainGUI extends javax.swing.JFrame {
 
     private void btn_course_offActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_course_offActionPerformed
         // TODO add your handling code here:
-//        AddTab("Lecturer Management", new LecturerManagementGUI());
+        AddTab("Course Offline Management", new Course_Offline());
 
     }//GEN-LAST:event_btn_course_offActionPerformed
 
