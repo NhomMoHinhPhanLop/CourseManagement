@@ -59,6 +59,8 @@ public class Lecturer {
     public void setHireDate(Date HireDate) {
         this.HireDate = HireDate;
     }
-    
+    public String getFullName(){
+        return FirstName+' '+LastName;
+    }
     
 }
