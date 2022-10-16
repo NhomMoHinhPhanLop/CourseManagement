@@ -4,9 +4,7 @@
  */
 package moirottoiec;
 
-import moirottoiec.BLL.UserBLL;
 import moirottoiec.DAL.DatabaseManager;
-import moirottoiec.GUI.LoginGUI;
 import moirottoiec.GUI.MainGUI;
 
 /**

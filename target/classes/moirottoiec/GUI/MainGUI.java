@@ -26,7 +26,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.Timer;
-import moirottoiec.DTO.User;
 
 /**
  *
@@ -335,7 +334,7 @@ public class MainGUI extends javax.swing.JFrame {
 
     private void btn_studentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_studentActionPerformed
         // TODO add your handling code here:
-        AddTab("Student ManagementGUI", new StudentManagementGUI());
+        AddTab("Student Management", new StudentManagementGUI());
     }//GEN-LAST:event_btn_studentActionPerformed
 
     private void btn_teacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_teacherActionPerformed
@@ -344,7 +343,7 @@ public class MainGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_teacherActionPerformed
 
     private void btn_IntructorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IntructorActionPerformed
-               AddTab("OfficeAssignment", new OfficeLecturerGUI());
+               AddTab("Office Assignment", new OfficeLecturerGUI());
 
 //        AddTab("Lecturer Management", new LecturerManagementGUI());
         

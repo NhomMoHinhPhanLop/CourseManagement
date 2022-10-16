@@ -69,7 +69,7 @@ public class OfficeLecturerDAL extends DatabaseManager{
                
             }
         } catch (SQLException ex) {
-            Logger.getLogger(UserDAL.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OfficeLecturerDAL.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return instructorlist;
@@ -90,7 +90,7 @@ public class OfficeLecturerDAL extends DatabaseManager{
                 courselist.add(c);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(UserDAL.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OfficeLecturerDAL.class.getName()).log(Level.SEVERE, null, ex);
         }
         return courselist;
     }
@@ -115,7 +115,7 @@ public class OfficeLecturerDAL extends DatabaseManager{
                 onsitelist.add(onl);         
             }
         } catch (SQLException ex) {
-            Logger.getLogger(UserDAL.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OfficeLecturerDAL.class.getName()).log(Level.SEVERE, null, ex);
         }
         return onsitelist;
     }
@@ -138,7 +138,7 @@ public class OfficeLecturerDAL extends DatabaseManager{
                 onlinelist.add(onl);         
             }
         } catch (SQLException ex) {
-            Logger.getLogger(UserDAL.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OfficeLecturerDAL.class.getName()).log(Level.SEVERE, null, ex);
         }
         return onlinelist;
     }

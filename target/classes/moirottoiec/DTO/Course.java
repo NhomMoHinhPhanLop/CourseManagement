@@ -6,25 +6,25 @@ package moirottoiec.DTO;
 
 /**
  *
- * @author minhv
+ * @author Admin
  */
 public class Course {
+    private  String Title ;
     private int CourseID;
 
-    public Course() {
-    }
-
-    public Course(int CourseID) {
-        this.CourseID = CourseID;
-    }
-
-    public int getCourseID() {
-        return CourseID;
+    public void setTitle(String Title) {
+        this.Title = Title;
     }
 
     public void setCourseID(int CourseID) {
         this.CourseID = CourseID;
     }
-    
-    
+
+    public String getTitle() {
+        return Title;
+    }
+
+    public int getCourseID() {
+        return CourseID;
+    }
 }

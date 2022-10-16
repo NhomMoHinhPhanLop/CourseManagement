@@ -47,7 +47,7 @@ public class OfficeLecturerGUI extends javax.swing.JPanel {
             ComboLboxecturer.setForeground(Color.red);
         }else{
             for(Lecturer str : listLecturer){
-                ComboLboxecturer.addItem(str.toString());
+                ComboLboxecturer.addItem(str.getFullName());
                 ComboLboxecturer.setForeground(Color.black);
             }
         }
@@ -65,7 +65,7 @@ public class OfficeLecturerGUI extends javax.swing.JPanel {
             ComboboxCourse.setForeground(Color.red);
         }else{
             for(Course c : listCourse){
-                ComboboxCourse.addItem(c.toString());
+                ComboboxCourse.addItem(c.getTitle());
                  ComboboxCourse.setForeground(Color.black);
             }
         }
